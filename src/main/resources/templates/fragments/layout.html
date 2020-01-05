@@ -1,0 +1,93 @@
+<!-- Author: Shifat63) -->
+<!doctype html>
+<html th:fragment="layout (template, menu)">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon.png}">
+
+        <title th:text="#{title}">SpringBoot-MongoDB</title>
+
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/product/index}" th:text="#{title}">SpringBoot-MongoDB</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/product/index}" th:text="#{home}">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Product</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" th:text="#{view_all}" th:href="@{/product/index}">View All</a>
+                                    <a class="dropdown-item" th:text="#{add}" th:href="@{/product/add}">Add</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Brand</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" th:text="#{view_all}" th:href="@{/brand/index}">View All</a>
+                                    <a class="dropdown-item" th:text="#{add}" th:href="@{/brand/add}">Add</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Employee</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" th:text="#{view_all}" th:href="@{/employee/index}">View All</a>
+                                    <a class="dropdown-item" th:text="#{add}" th:href="@{/employee/add}">Add</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Showroom</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" th:text="#{view_all}" th:href="@{/showroom/index}">View All</a>
+                                    <a class="dropdown-item" th:text="#{add}" th:href="@{/showroom/add}">Add</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="container xd-container">
+                <th:block th:include="${template}"/>
+                <br/>
+                <br/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            &copy; Shifat63
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </body>
+</html>

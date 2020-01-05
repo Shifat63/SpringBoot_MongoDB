@@ -1,0 +1,40 @@
+<!-- Author: Shifat63) -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <h1>View Employee</h1>
+    <div class="pannel-group">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table id="showroomDetails" class="table table-hover">
+                    <tr>
+                        <th>First Name: </th>
+                        <td th:text="${employee.getFirstName()}"></td>
+                        <th>Last Name: </th>
+                        <td th:text="${employee.getLastName()}"></td>
+                    </tr>
+                    <tr>
+                        <th>Birth Date: </th>
+                        <td th:text="${employee.getBirthDate()}"></td>
+                        <th>Joining Date: </th>
+                        <td th:text="${employee.getJoiningDate()}"></td>
+                    </tr>
+                    <tr>
+                        <th>ID Card Number: </th>
+                        <td colspan="3" th:text="${employee.getIdCardNo()}"></td>
+                    </tr>
+                    <tr>
+                        <th>Showroom: </th>
+                        <td>
+                            <a th:text="${employee.getShowroom().getName()}" th:href="@{'/showroom/view/' + ${employee.getShowroom().getId()} }">View</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

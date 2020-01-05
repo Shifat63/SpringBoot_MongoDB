@@ -1,0 +1,42 @@
+<!-- Author: Shifat63) -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Employee List</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(employees)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Name</th>
+                                <th>View</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="employee, i : ${employees}">
+                                <td th:text="${i.count}"></td>
+                                <td th:text="${employee.getFirstName() + ' ' + employee.getLastName()}"></td>
+                                <td><a th:text="#{view}" th:href="@{'/employee/view/' + ${employee.getId()} }">View</a></td>
+                                <td><a th:text="#{edit}" th:href="@{'/employee/edit/' + ${employee.getId()} }">Edit</a></td>
+                                <td><a th:text="#{delete}" th:href="@{'/employee/delete/' + ${employee.getId()} }">Delete</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- Author: Shifat63) -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <h1>View Product</h1>
+    <div class="pannel-group">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table id="productDetails" class="table table-hover">
+                    <tr>
+                        <th>Product Name: </th>
+                        <td colspan="3" th:text="${product.getName()}"></td>
+                    </tr>
+                    <tr>
+                        <th>Product Price: </th>
+                        <td th:text="${product.getPrice()}"></td>
+                        <th>Available: </th>
+                        <td>
+                            <span th:if="${product.getAvailable() == true}">Yes</span>
+                            <span th:unless="${product.getAvailable() == true}">No</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Showrooms: </th>
+                        <td>
+                            <span th:if="${product.getShowroomSet() != null && product.getShowroomSet().size() != 0}">
+                                <span th:each="showroom, i : ${product.getShowroomSet()}">
+                                    <span th:if="${i.count == i.size}">
+                                        <span th:text="${showroom.getName()}"></span>
+                                    </span>
+                                    <span th:unless="${i.count == i.size}">
+                                        <span th:text="${showroom.getName()} + ','"></span>
+                                    </span>
+                                </span>
+                            </span>
+                            <span th:unless="${product.getShowroomSet() != null && product.getShowroomSet().size() != 0}">
+                                -
+                            </span>
+                        </td>
+                        <th>Brand: </th>
+                        <td>
+                            <span th:if="${product.getBrand() != null}">
+                                <span th:text="${product.getBrand().getName()}">
+                                </span>
+                            </span>
+                            <span th:unless="${product.getBrand() != null}">
+                                -
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Product Description: </th>
+                        <td colspan="3" th:text="${product.getDescription()}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
