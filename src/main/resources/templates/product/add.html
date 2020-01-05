@@ -1,0 +1,101 @@
+<!-- Author: Shifat63) -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <h1 th:if="${product.getId()==null}" >Add Product</h1>
+    <h1 th:unless="${product.getId()==null}" >Edit Product</h1>
+    <form th:object="${product}" th:action="@{/product/add}" method="post" >
+        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+            <p>Please Correct Errors Below</p>
+        </div>
+        <input type="hidden" th:field="*{id}"/>
+        <div class="pannel-group">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 form-group" >
+                            <label>Product Name:</label>
+                            <input type="text" class="form-control" th:field="*{name}" th:errorclass="has-error"/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('name')}">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('name')}" th:text="${err}"/>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Product Price:</label>
+                            <input type="text" class="form-control" th:field="*{price}" th:errorclass="has-error"/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('price')}">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('price')}" th:text="${err}"/>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Available:</label>
+                            <select th:field="*{available}" class="form-control browser-default custom-select">
+                                <option value="" selected>Select</option>
+                                <option th:value="true" th:text="Yes"></option>
+                                <option th:value="false" th:text="No"></option>
+                            </select>
+                            <div th:if="${#fields.hasErrors('available')}" class="alert alert-danger">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('available')}" th:text="${err}" ></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <label>Showrooms:</label>
+                        </div>
+                        <div class="col-md-10 form-group">
+                            <label th:each="showroom : ${showrooms}">
+                                <input type="checkbox" th:field="*{showroomSet}" th:text="${showroom.getName()}" th:value="${showroom.getId()}"/>
+                                &nbsp;&nbsp;
+                            </label>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('showroomSet')}">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('showroomSet')}" th:text="${err}"/>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label>Brand:</label>
+                            <select th:field="*{brand}" class="form-control browser-default custom-select">
+                                <option value="" selected>Select Brand</option>
+                                <option th:each="brand : ${brands}" th:value="${brand.getId()}" th:text="${brand.getName()}"></option>
+                            </select>
+                            <div th:if="${#fields.hasErrors('brand')}" class="alert alert-danger">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('brand')}" th:text="${err}" ></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label>Description: </label>
+                            <textarea class="form-control" rows="3" th:field="*{description}"></textarea>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('description')}">
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('description')}" th:text="${err}"/>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
