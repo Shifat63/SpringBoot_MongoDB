@@ -72,4 +72,11 @@ public class BrandServiceImpl implements BrandService {
         brandRepository.deleteById(brandId);
         log.info("end: deleteById method of BrandServiceImpl");
     }
+
+    @Override
+    public void deleteAll() throws Exception {
+        log.info("start: deleteAll method of BrandServiceImpl");
+        brandRepository.deleteAll();
+        log.info("start: deleteAll method of BrandServiceImpl");
+    }
 }

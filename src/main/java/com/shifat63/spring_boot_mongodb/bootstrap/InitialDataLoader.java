@@ -11,6 +11,7 @@ import com.shifat63.spring_boot_mongodb.services.service.ProductService;
 import com.shifat63.spring_boot_mongodb.services.service.ShowroomService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -38,11 +39,23 @@ public class InitialDataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
+        clearAllData();
         loadBrandData();
         loadShowroomData();
         loadProductData();
         loadEmployeeData();
+        brandList.removeAll(brandList);
+        showroomList.removeAll(showroomList);
+    }
+
+    private void clearAllData() throws Exception
+    {
+        productService.deleteAll();
+        brandService.deleteAll();
+        employeeService.deleteAll();
+        showroomService.deleteAll();
     }
 
     private void loadEmployeeData() throws Exception

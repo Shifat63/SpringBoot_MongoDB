@@ -10,4 +10,5 @@ public interface CrudService<T, Id>
     T findById(Id id) throws Exception;
     T saveOrUpdate(T object) throws Exception;
     void deleteById(Id id) throws Exception;
+    void deleteAll() throws Exception;
 }
