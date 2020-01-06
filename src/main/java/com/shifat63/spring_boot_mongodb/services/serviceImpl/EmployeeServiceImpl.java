@@ -85,4 +85,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(employeeId);
         log.info("end: deleteById method of EmployeeServiceImpl");
     }
+
+    @Override
+    public void deleteAll() throws Exception {
+        log.info("start: deleteAll method of EmployeeServiceImpl");
+        employeeRepository.deleteAll();
+        log.info("end: deleteAll method of EmployeeServiceImpl");
+    }
 }

@@ -73,4 +73,11 @@ public class ShowroomServiceImpl implements ShowroomService {
         showroomRepository.deleteById(showroomId);
         log.info("end: deleteById method of ShowroomServiceImpl");
     }
+
+    @Override
+    public void deleteAll() throws Exception {
+        log.info("start: deleteAll method of ShowroomServiceImpl");
+        showroomRepository.deleteAll();
+        log.info("end: deleteAll method of ShowroomServiceImpl");
+    }
 }

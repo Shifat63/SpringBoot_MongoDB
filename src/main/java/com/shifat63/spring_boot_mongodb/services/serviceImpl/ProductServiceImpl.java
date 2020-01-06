@@ -180,4 +180,11 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(productId);
         log.info("end: deleteById method of ProductServiceImpl");
     }
+
+    @Override
+    public void deleteAll() throws Exception {
+        log.info("start: deleteAll method of ProductServiceImpl");
+        productRepository.deleteAll();
+        log.info("end: deleteAll method of ProductServiceImpl");
+    }
 }
