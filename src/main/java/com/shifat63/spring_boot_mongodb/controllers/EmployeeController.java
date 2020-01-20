@@ -58,6 +58,7 @@ public class EmployeeController {
 
         if(bindingResult.hasErrors()){
             log.error("error: addOrEditEmployeePost method of EmployeeController -> Employee model validation failed");
+            model.addAttribute("showrooms", showroomService.findAll());
             return "employee/add";
         }
 
